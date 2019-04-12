@@ -1,3 +1,3 @@
 <?php
 echo"Hallo Welt!";
-echo "IntelliJ ist das beste Tool der Welt!";
+echo "VisualStudioCode ist das beste Tool der Welt!";
