@@ -17,7 +17,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign Up</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign Down</a></li>
                 <li><a href="#" class="btn btn-blue">Log In</a></li>
 
             </ul>
