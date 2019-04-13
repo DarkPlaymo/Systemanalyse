@@ -13,12 +13,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign Down</a></li>
-                <li><a href="#" class="btn btn-blue">Log In</a></li>
+                <li><a href="index.php?key=register" class="btn btn-blue">Sign Up</a></li>
+                <li><a href="index.php?key=login" class="btn btn-blue">Log In</a></li>
 
             </ul>
         </div>
