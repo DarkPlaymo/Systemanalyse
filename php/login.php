@@ -1,3 +1,22 @@
+<?php
+require "psDB.php";
+
+$psDB = new psDB();
+$connection = $psDB->getDatabaseConnection();
+
+if (isset($_SESSION['eveningPitchSession'])) {
+
+    $query = "SELECT `session` FROM `sessions` WHERE session='".$_SESSION['eveningPitchSession']."'";
+
+    $result = $psDB->doQuery($connection,$query);
+
+    if ($result[0] == $_SESSION['eveningPitchSession']){
+        header('location: inside.php');
+    }
+}
+?>
+
+
 <h2>Login</h2>
 <form action="php/checkLogin.php" method="post">
     <div class="container">

@@ -17,9 +17,6 @@ session_start();
 
     switch ($sitekey) {
         case "login":
-            if(isset($_SESSION['eveningPitchSession'])){
-
-            }
                 include "php/login.php";
             break;
         case "register":
@@ -30,9 +27,6 @@ session_start();
             include "php/header.php";
 
     }
-
-
-
 ?>
 
 <?php include "php/modal.php"; ?>
@@ -43,13 +37,7 @@ session_start();
     <a href="#" class="close-link"><i class="arrow_up"></i></a>
 </div>
 <!-- Scripts -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/typewriter.js"></script>
-<script src="js/jquery.onepagenav.js"></script>
-<script src="js/main.js"></script>
+<?php include "php/scripts.php"?>
 </body>
 
 </html>

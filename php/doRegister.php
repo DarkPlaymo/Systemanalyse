@@ -7,7 +7,7 @@ $query = "INSERT INTO `users`( `username`, `password`) VALUES ('".$_POST["uname"
 $psDB->doQuery($connection,$query);
 
 if($psDB == false){
-    echo "Fehler";
+    echo "Fehler beim Registrieren.";
 }else {
     header('location: ../index.php');
 }
