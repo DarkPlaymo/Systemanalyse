@@ -1,31 +1,36 @@
 <?php
+session_start();
 include "php/section/head.php";
 ?>
 <body>
-<nav class="navbar">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="img/logo.png" data-active-url="img/logo-active.png" alt=""></a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right main-nav">
-                <li><a href="php/logout.php" class="btn btn-blue">Log Out</a></li>
+<ul >
+    <li><a href="inside.php?key=gruppenverwaltung" class="">Meine Gruppen</a></li>
+    <li><a href="php/logout.php" class="">Log Out</a></li>
+    <li><a href="php/deleteAccount.php" class="">Account löschen</a></li>
+    <li><a href="inside.php" class="">Dashboard</a></li>
+</ul>
+<div>
+<?php
 
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-<h2>Eingeloggter Bereich!</h2>
+if (isset($_GET["key"])) {
+    $sitekey = $_GET["key"];
+}else{
+    $sitekey = " ";
+}
+
+
+switch ($sitekey) {
+    case "gruppenverwaltung":
+        include "php/gruppenVerwaltung.php";
+        break;
+    default:
+       echo"<div><h2>Eingeloggter Bereich!</h2>";
+        break;
+}
+?>
+</div>
+
+
 <?php include "php/scripts.php"?>
 </body>
 

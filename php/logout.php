@@ -9,4 +9,7 @@ $query = "DELETE FROM `sessions` WHERE session='".$_SESSION['eveningPitchSession
 
 $result = $psDB->doQuery($connection,$query);
 unset($_SESSION['eveningPitchSession']);
-echo "Succesfully Logged Out!";
+unset($_SESSION['eveningPitchUsername']);
+
+
+header('location: ../index.php');

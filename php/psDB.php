@@ -38,7 +38,7 @@ class psDB
         if (is_bool($databaseObject)) {
             $result = $databaseObject;
         } else {
-            $result = $databaseObject->fetch();
+            $result = $databaseObject->fetchAll();
         }
         return $result;
     }

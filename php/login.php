@@ -10,7 +10,7 @@ if (isset($_SESSION['eveningPitchSession'])) {
 
     $result = $psDB->doQuery($connection,$query);
 
-    if ($result[0] == $_SESSION['eveningPitchSession']){
+    if ($result[0]["session"] == $_SESSION['eveningPitchSession']){
         header('location: inside.php');
     }
 }
