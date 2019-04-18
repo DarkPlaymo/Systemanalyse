@@ -4,6 +4,7 @@ include "php/section/head.php";
 ?>
 <body>
 <ul >
+    <li><a href="inside.php?key=meineEvents" class="">Meine Events</a></li>
     <li><a href="inside.php?key=gruppenverwaltung" class="">Meine Gruppen</a></li>
     <li><a href="php/logout.php" class="">Log Out</a></li>
     <li><a href="php/deleteAccount.php" class="">Account löschen</a></li>
@@ -22,6 +23,9 @@ if (isset($_GET["key"])) {
 switch ($sitekey) {
     case "gruppenverwaltung":
         include "php/gruppenVerwaltung.php";
+        break;
+    case "meineEvents":
+        include "php/meineEvents.php";
         break;
     default:
        echo"<div><h2>Eingeloggter Bereich!</h2>";
