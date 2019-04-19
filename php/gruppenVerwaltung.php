@@ -7,13 +7,13 @@ $psDB = new psDB();
 $connection = $psDB->getDatabaseConnection();
 
 
-$query ="SELECT DISTINCT g.name, g.owner 
+$query = "SELECT DISTINCT g.name, g.owner 
 FROM gruppen g 
 LEFT JOIN gruppenmitglieder gm on g.name = gm.gruppenname AND g.owner =gm.owner 
-WHERE g.owner='".$_SESSION["eveningPitchUsername"]."' OR gm.mitglied='".$_SESSION["eveningPitchUsername"]."'";
+WHERE g.owner='" . $_SESSION["eveningPitchUsername"] . "' OR gm.mitglied='" . $_SESSION["eveningPitchUsername"] . "'";
 $result = $psDB->doQuery($connection, $query);
 
-echo "<div style='width: 50%'><table class=\"table\"><thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Owner</th><th scope=\"col\">Member</th></tr></thead><tbody>";
+echo "<div style='width: 50%'><table class=\"table\"><thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Owner</th><th scope=\"col\">Member</th><th scope=\"col\">Gruppe verlassen</th></tr></thead><tbody>";
 
 for ($i = 0; $i < sizeof($result); $i++) {
     echo "<tr>";
@@ -26,8 +26,10 @@ for ($i = 0; $i < sizeof($result); $i++) {
     for ($j = 0; $j < sizeof($members); $j++) {
         $memberString .= $members[$j]["mitglied"] . "; ";
     }
-
     echo "<td>" . $memberString . "</td>";
+    if (strpos($memberString, $_SESSION["eveningPitchUsername"] . ";") !== false) {
+        echo "<td><a style='color: red; font-weight: bold' href='php/groupAction.php?action=deleteMember&gruppenname=".$result[$i]["name"] ."&groupOwner=".$result[$i]["owner"]."&mitglied=".$_SESSION["eveningPitchUsername"]."'>X</a></td>";
+    }
     echo "</tr>";
 }
 echo "</tbody></table></div>";
