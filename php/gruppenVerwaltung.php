@@ -1,6 +1,6 @@
 <h2>Gruppenverwaltung</h2>
-<button id="BtnCreateDeleteGroup">Gruppe erstellen/löschen</button>
-<button id="BtnAddDeleteMember">Mitglied hinzufügen/entfernen</button>
+<button class="btn btn-blue" id="BtnCreateDeleteGroup">Gruppe erstellen/löschen</button>
+<button class="btn btn-blue" id="BtnAddDeleteMember">Mitglied hinzufügen/entfernen</button>
 <?php
 require "psDB.php";
 $psDB = new psDB();
@@ -48,7 +48,7 @@ echo "</tbody></table></div>";
             <label name="mitglied">Betreffendes Mitglied:</label>
             <input type="text" name="mitglied">
             <label for="radioCreate">Hinzufügen:</label>
-            <input type="radio" id="radioCreate" value="addMember" name="action">
+            <input type="radio" id="radioCreate" value="addMember" name="action" checked>
             <label for="radioDelete">Löschen:</label>
             <input type="radio" id="radioDelete" value="deleteMember" name="action">
             <button type="submit">Ausführen</button>
@@ -67,10 +67,10 @@ echo "</tbody></table></div>";
             <label name="gruppenname">Gruppenname</label>
             <input type="text" name="gruppenname">
             <label for="radioCreate">Erstellen:</label>
-            <input type="radio" id="radioCreate" value="create" name="action">
+            <input type="radio" id="radioCreate" value="create" name="action" checked>
             <label for="radioDelete">Löschen:</label>
             <input type="radio" id="radioDelete" value="delete" name="action">
-            <button type="submit">Erstellen</button>
+            <button type="submit">Ausführen</button>
         </form>
     </div>
 </div>
