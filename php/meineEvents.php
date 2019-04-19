@@ -11,13 +11,14 @@ $connection = $psDB->getDatabaseConnection();
         <span id="closeGroup">&times;</span>
 
         <form action="php\eventAction.php" method="get">
+            <p>Event</p>
             <label for="radioCreate">Erstellen:</label>
             <input type="radio" id="radioCreate" value="create" name="action" checked>
             <label for="radioDelete">Löschen:</label>
             <input  type="radio" id="radioDelete" value="delete" name="action">
 
             <div id="dataForCreateEvent">
-                <p>Event</p>
+
                 <label name="eventName">Event:</label>
                 <input type="text" name="eventName">
                 <label for="eventDate">Datum:</label>
@@ -40,10 +41,10 @@ $connection = $psDB->getDatabaseConnection();
 
                 <label for="filmName">Film:</label>
                 <select id='filmName' name="filmName">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                    <option value="Star Trek">Star Trek</option>
+                    <option value="Star Treck: Into Darkness">Star Treck: Into Darkness</option>
+                    <option value="Shrek">Shrek</option>
+                    <option value="SAW">SAW</option>
                 </select>
             </div>
             <div id="dataForDeleteEvent" style="display: none">

@@ -6,8 +6,9 @@ include "php/section/head.php";
 <ul >
     <li><a href="php/logout.php" class="">Log Out</a></li>
     <li><a href="inside.php" class="">Dashboard</a></li>
-    <li><a href="inside.php?key=meineEvents" class="">Meine Events</a></li>
-    <li><a href="inside.php?key=gruppenverwaltung" class="">Meine Gruppen</a></li>
+    <li><a href="inside.php?key=gruppenverwaltung" class="">Gruppen</a></li>
+    <li><a href="inside.php?key=meineEvents" class="">Events</a></li>
+    <li><a href="inside.php?key=finance" class="">Finanzübersicht</a></li>
 </ul>
 <div>
 <?php
@@ -25,6 +26,9 @@ switch ($sitekey) {
         break;
     case "meineEvents":
         include "php/meineEvents.php";
+        break;
+    case "finance":
+        include "php/finanzübersicht.php";
         break;
     default:
        echo"<div><h2>Eingeloggter Bereich!</h2>";
