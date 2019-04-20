@@ -5,6 +5,7 @@ $connection = $psDB->getDatabaseConnection();
 ?>
 <h2>Meine Events</h2>
 <button class="btn btn-blue" id="BtnCreateDeleteGroup">Event erstellen/löschen</button>
+<button class="btn btn-blue" id="BtnOrderFood">Essen bestellen</button>
 <div id="createDeleteGroup" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -67,25 +68,81 @@ $connection = $psDB->getDatabaseConnection();
     </div>
 </div>
 
+<div id="orderFood" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeOrder">&times;</span>
+
+        <form action="php/financeAction.php" method="get">
+            <p>Essen bestellen</p>
+            <input type="text" name="action" value="order" style="display: none">
+            <?php
+            echo "<input style='display: none' type='text' name='besteller' value='".$_SESSION["eveningPitchUsername"]."'>";
+            ?>
+            <label for="eventName">Event:</label>
+            <select id='eventToOrder' name="eventName">
+                <?php
+                $query = "SELECT DISTINCT e.eventName
+                            FROM event e 
+                            LEFT JOIN gruppenmitglieder gm ON e.gruppe = gm.gruppenname 
+                            WHERE gm.mitglied='" . $_SESSION["eveningPitchUsername"] . "' 
+                            ORDER BY e.eventName";
+
+                $result = $psDB->doQuery($connection, $query);
+
+                for($i = 0;$i< sizeof($result);$i++){
+                    echo "<option value='".$result[$i]["eventName"]."'>".$result[$i]["eventName"]."</option>";
+
+                }
+                ?>
+            </select>
+            <select id='foodToOrder' name="gericht">
+                <?php
+
+                $query = "SELECT `gerichtName`, `preis` FROM `gericht`";
+
+                $result = $psDB->doQuery($connection, $query);
+
+                for($i = 0;$i< sizeof($result);$i++){
+                    echo "<option value='".$result[$i]["gerichtName"]."'>".$result[$i]["gerichtName"]."(".$result[$i]["preis"]."€)</option>";
+                }
+                ?>
+            </select>
+
+            <button type="submit">Ausführen</button>
+        </form>
+    </div>
+</div>
+
 <script>
     // Get the modal
     var modal0 = document.getElementById("createDeleteGroup");
+    var modalFood = document.getElementById("orderFood");
     // Get the button that opens the modal
     var btn0 = document.getElementById("BtnCreateDeleteGroup");
+    var btnFood = document.getElementById("BtnOrderFood");
     // Get the <span> element that closes the modal
     var span0 = document.getElementById("closeGroup");
+    var spanFood = document.getElementById("closeOrder");
     // When the user clicks on the button, open the modal
     btn0.onclick = function () {
         modal0.style.display = "block";
+    }
+    btnFood.onclick = function () {
+        modalFood.style.display = "block";
     }
     // When the user clicks on <span> (x), close the modal
     span0.onclick = function () {
         modal0.style.display = "none";
     }
+    spanFood.onclick = function () {
+        modal0.style.display = "none";
+    }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
-        if (event.target == modal0) {
+        if (event.target == modal0 ||event.target == modalFood  ) {
             modal0.style.display = "none";
+            modalFood.style.display = "none";
         }
     }
 
