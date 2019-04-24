@@ -28,6 +28,7 @@ switch ($action) {
         $query = "DELETE FROM `gruppen` WHERE name='" . $gruppenname . "' AND owner='" . $groupOwner . "'";
         $result = $psDB->doQuery($connection, $query);
         $query = "DELETE FROM `gruppenmitglieder` WHERE gruppenname='" . $gruppenname . "' AND owner='" . $groupOwner . "'";
+        $result = $psDB->doQuery($connection, $query);
         break;
     case "addMember":
         $query = "INSERT INTO `gruppenmitglieder`(`gruppenname`, `owner`, `mitglied`) VALUES ('" . $gruppenname . "','" . $groupOwner . "','" . $mitglied . "')";
