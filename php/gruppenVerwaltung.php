@@ -10,7 +10,8 @@ $connection = $psDB->getDatabaseConnection();
 $query = "SELECT DISTINCT g.name, g.owner 
 FROM gruppen g 
 LEFT JOIN gruppenmitglieder gm on g.name = gm.gruppenname AND g.owner =gm.owner 
-WHERE g.owner='" . $_SESSION["eveningPitchUsername"] . "' OR gm.mitglied='" . $_SESSION["eveningPitchUsername"] . "'";
+WHERE g.owner='" . $_SESSION["eveningPitchUsername"] . "' OR gm.mitglied='" . $_SESSION["eveningPitchUsername"] . "'
+ORDER BY g.owner ASC,g.name ASC";
 $result = $psDB->doQuery($connection, $query);
 
 echo "<div style='width: 50%'><table class=\"table\"><thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Owner</th><th scope=\"col\">Member</th><th scope=\"col\">Gruppe verlassen</th></tr></thead><tbody>";
@@ -28,14 +29,14 @@ for ($i = 0; $i < sizeof($result); $i++) {
     }
     echo "<td>" . $memberString . "</td>";
     if (strpos($memberString, $_SESSION["eveningPitchUsername"] . ";") !== false) {
-        echo "<td><a style='color: red; font-weight: bold' href='php/groupAction.php?action=deleteMember&gruppenname=".$result[$i]["name"] ."&groupOwner=".$result[$i]["owner"]."&mitglied=".$_SESSION["eveningPitchUsername"]."'>X</a></td>";
+        echo "<td><a style='color: white; background-color: #d9534f;width: 65%;font-size: 0.75em; font-weight: bold' class='btn btn-danger' href='php/groupAction.php?action=deleteMember&gruppenname=" . $result[$i]["name"] . "&groupOwner=" . $result[$i]["owner"] . "&mitglied=" . $_SESSION["eveningPitchUsername"] . "'>Gruppe verlassen</a></td>";
+    } else {
+        echo "<td></td>";
     }
     echo "</tr>";
 }
 echo "</tbody></table></div>";
 ?>
-
-
 <div id="addDeleteGroupMember" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -55,8 +56,6 @@ echo "</tbody></table></div>";
         </form>
     </div>
 </div>
-
-
 <div id="createDeleteGroup" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
